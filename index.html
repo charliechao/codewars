@@ -318,9 +318,69 @@ Example<br>
 </code>
 </section>
 <hr>
+<section>
+  <h2>Problem 10: Basic JS - Building a calculator</h2>
+  <p>Description: <br>
 
-<!-- Section Structure -->
-section>(h2{Problem}+p)+(h2{My Code}+code)^hr
+Let's build a calculator.<br>
+
+This is very basic Javascript kata.<br>
+
+The test expects you to provide a Calculator object with the following methods:<br>
+<code>
+Calculator.add()<br>
+Calculator.subtract()<br>
+Calculator.multiply()<br>
+Calculator.divide()<br></code></p>
+  <h2>My Code</h2>
+  <code>var Calculator = {<br>
+  add: function(a,b) {return a+b},<br>
+  subtract: function(a,b) {return a-b},<br>
+  multiply: function(a,b){return a*b},<br>
+  divide:function(a,b){ return b ===0 ? false : a/b}<br>
+
+};</code>
+</section>
+<hr>
+
+<section>
+  <h2>Problem 11: Basic JS - Calculating averages</h2>
+  <p>Description: <br>
+
+Let's build a calculator that can calculate the average for an arbitrary number of arguments.<br>
+
+The test expects you to provide a Calculator object with an average method:<br>
+
+<code>Calculator.average()</code> <br>
+The test also expects that when you pass no arguments, it returns 0. The arguments are expected to be integers.<br>
+
+It expects Calculator.average(3,4,5) to return 4.<br></p>
+  <h2>My Code</h2>
+  <code>var Calculator = {<br>
+ average: function() {<br>
+     if(arguments.length === 0) {<br>
+         return 0;<br>
+     } <br>
+     else {<br>
+   var i, sum = 0;<br>
+    for(i = 0; i < arguments.length; i++) {<br>
+        sum += arguments[i];<br>
+    }<br>
+    return sum/arguments.length; <br>
+   
+ }}<br>
+};</code>
+</section>
+<hr>
+
+
+
+
+
+
+
+<!-- Section Structure
+section>(h2{Problem}+p)+(h2{My Code}+code)^hr -->
 
 
 
