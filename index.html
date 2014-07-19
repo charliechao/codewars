@@ -373,12 +373,312 @@ It expects Calculator.average(3,4,5) to return 4.<br></p>
 </section>
 <hr>
 
+<section>
+  <h2>Problem 12: Number Of Occurrences</h2>
+  <p>Description: <br>
+
+The numberOfOccurrences function must return the number of <br>occurrences of an element in an array.<br>
+<code>
+var arr = [0,1,2,2,3];<br>
+arr.numberOfOccurrences(0) === 1;<br>
+arr.numberOfOccurrences(4) === 0;<br>
+arr.numberOfOccurrences(2) === 2;<br>
+arr.numberOfOccurrences("a") === 0;</code></p>
+  <h2>My Code</h2>
+  <code>Array.prototype.numberOfOccurrences = function(num) {<br>
+return this.filter(function(aValue){return aValue === num}).length;<br>
+
+}</code>
+</section>
+<hr>
+
+<section>
+  <h2>Problem 13: The Vowel Code</h2>
+  <p>Description: <br>
+
+Step 1: Create a function called encode() to replace all the <br>lowercase vowels in a given string with numbers according to the <br>following pattern:<br>
+
+a -> 1<br>
+
+e -> 2<br>
+
+i -> 3<br>
+
+o -> 4<br>
+
+u -> 5<br>
+
+For example, encode("hello") would return "h2ll4" There is no need<br> to worry about uppercase vowels in this kata.<br>
+
+Step 2: Now create a function called decode() to turn the numbers<br> back into vowels according to the same pattern shown above.<br>
+
+For example, decode("h3 th2r2") would return "hi there"<br>
+
+For the sake of simplicity, you can assume that any numbers passed <br>into the function will correspond to vowels.</p>
+  <h2>My Code</h2>
+  <code>/ turn vowels into numbers<br>
+function encode(string){<br>
+return string.replace(/[a]/gi,1).replace(/[e]/gi,2).replace(/[i]<br>/gi,3)<br>
+.replace(/[o]/gi,4).replace(/[u]/gi,5);<br>
+}<br>
+
+//turn numbers back into vowels<br>
+function decode(string){<br>
+return string.replace(/[1]/gi,"a").replace(/[2]/gi,"e").replace(/[3]/gi,"i")<br>
+.replace(/[4]/gi,"o").replace(/[5]/gi,"u");<br>
+}</code>
+</section>
+<hr>
+
+<section>
+  <h2>Problem 14: Mutual Recursion</h2>
+  <p>Description: <br>
+
+In JavaScript there is a concept of function and variable "hoisting". (see https://developer.mozilla.org/en-<br>US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting)<br>
+
+Due to this compilation strategy JavaScript retains the ability to do mutual recursion. This means you can have all the fun of <br>regular recursion (where a function calls itself until a terminating condition) and apply it to multiple functions calling each <br>other!<br>
+
+Let's use the Hofstadter Female and Male sequences to demonstrate this technique. You'll want to create two functions F and M such <br>that the following equations are true:<br>
+<code>
+F(0) = 1<br>
+M(0) = 0<br>
+F(n) = n - M(F(n - 1))<br>
+M(n) = n - F(M(n - 1))<br>
+</code>
+Don't worry about negative numbers, n will always be greater than zero.<br>
+
+Hofstadter Wikipedia Reference http://en.wikipedia.org/wiki/Hofstadter_sequence#Hofstadter_Female_and_Male_sequences</p>
+  <h2>My Code</h2>
+  <code>function F(n) {<br>
+if (n === 0) {<br>
+  return 1;<br>
+  } else {<br>
+  return n -M(F(n-1));<br>
+    }<br>
+}<br>
+
+function M(n) {<br>
+ if (n === 0) {<br>
+   return 0;<br>
+ } else {<br>
+   return n-F(M(n-1));<br>
+   }<br>
+}</code>
+</section>
+<hr>
+
+<section>
+  <h2>Problem 15: esreveR gnirtS</h2>
+  <p>Description: <br>
+
+Create a function called reverse for the String prototype that will allow the following functionality:<br>
+ <code>
+"String".reverse();// => returns "gnirtS"<br>
+"Super awesome string".reverse();// => returns "gnirts emosewa repuS"</code><br>
+The reverse function should NOT modify the original string.</p>
+  <h2>My Code</h2>
+  <code>String.prototype.reverse = function (){<br>
+
+return this.split("").reverse().join("");<br>
+
+}</code>
+</section>
+<hr>
 
 
+<section>
+  <h2>Problem 16: Disemvowel Trolls</h2>
+  <p>Description: <br>
+
+Trolls are attacking your comment section!<br>
+
+A common way to deal with this situation is to remove all of the vowels from the trolls' comments, neutralizing the threat.<br>
+
+Your task is to write a function that takes a string and return a new string with all vowels removed.<br>
+
+For example, the string "This website is for losers LOL!" would become "Ths wbst s fr lsrs LL!".</p>
+  <h2>My Code</h2>
+  <code>function disemvowel(str) {<br>
+   return str.replace(/[ioaeu]/gi, "");<br>
+ 
+}</code>
+</section>
+<hr>
+
+<section>
+  <h2>Problem 17: Say "Hello World" JS Style</h2>
+  <p>Description: <br>
+
+Write the definition of the function "say" such that calling this:<br>
+
+<code>say("Hello")("World")</code><br>
+returns "Hello World"</p>
+  <h2>My Code</h2>
+  <code>ar say = function(string1) {<br>
+ return  function(string2) {<br>
+     return string1 + " " + string2;<br>
+ };<br>
+};</code>
+</section>
+<hr>
+
+<section>
+  <h2>Problem 18: Summing a number's digits</h2>
+  <p>Description: <br>
+
+Write a function named sumDigits which takes a number as input and returns the sum of the absolute value of each of the number's <br>decimal digits. For example:<br>
+<code>
+  sumDigits(10); // Returns 1<br>
+  sumDigits(99); // Returns 18<br>
+  sumDigits(-32); // Returns 5</code>
+Let's assume that all numbers in the input will be integer values.</p>
+  <h2>My Code</h2>
+  <code>function sumDigits(number) {<br>
+var aNumberSpt = Math.abs(number).toString().split(""); <br>
+var aNumberSpta = [];<br>
+
+for (var i =0; i< aNumberSpt.length; i++) {<br>
+    aNumberSpta.push(parseInt(aNumberSpt[i]));<br>
+  
+}<br>
+return aNumberSpta.reduce(function(a,b){return a+b});<br>
+
+}</code>
+</section>
+<hr>
+
+<section>
+     <h2>Problem 19: For the sake of argument</h2>
+     <p>Description: <br>
+
+Write a function named numbers that returns true if all the parameters it is passed are of the Number type. Otherwise, the function<br> should return false. The function should accept any number of parameters.<br>
+
+Example usage:<br>
+<code>
+numbers(1, 4, 3, 2, 5); // true<br>
+numbers(1, "a", 3); // false<br>
+numbers(1, 3, NaN); // true</code></p>
+     <h2>My Code</h2>
+     <code>function numbers () {<br>
+   var aNumbers = Array.prototype.slice.call(arguments);<br>
+   function Type (arg) {<br>
+       return typeof arg === "number";<br>
+       
+   }<br>
+   return aNumbers.every(Type);<br>
+   
+}</code>
+   </section>
+   <hr>   
+
+<section>
+  <h2>Problem 20: Reversed Strings</h2>
+  <p>Description: <br>
+
+Complete the solution so that it reverses the string value passed into it.<br>
+
+<code>solution('world'); // returns 'dlrow'</code></p>
+  <h2>My Code</h2>
+  <code>function solution(str){<br>
+  return str.split("").reverse().join("");<br>
+}</code>
+</section>
+<hr>
+
+<section>
+  <h2>Problem 21: Slope of a Line</h2>
+  <p>Description: <br>
+
+Your challenge is to write a function named <code>getSlope(p1, p2)</code> that calculates the slope of the line through two points.<br> Each point that the function takes in is an array 2 elements long. The first number is the x coordinate and the second number is <br>the y coordinate. If the line through the two points is vertical, the function should return null. If the same point is given <br>twice, the function should return null.</p>
+  <h2>My Code</h2>
+  <code>function getSlope(p1, p2) {<br>
+  return p2[0] ===p1[0] ? null : (p2[1]-p1[1])/(p2[0]-p1[0])<br>
+}</code>
+</section>
+<hr>
 
 
+<section>
+  <h2>Problem 22: Use reduce() to calculate the sum of the values in an array</h2>
+  <p>Description: <br>
 
+Make the sum() function return the sum of the values in the passed in array. Your solution must use the reduce() function of the <br>built-in javascript Array object. If you're not familiar with reduce(), reading over the documentation may help.<br>
 
+<code>function sum(array) {<br>
+    // Use array.reduce() to find and return the<br>
+    // sum of the values in array.<br>
+  }
+  For example:<br>
+  
+  var someNumbers = [1,2,3,4,5,6,7,8,9,10];<br>
+  
+  sum(someNumbers); // should return 55</code></p>
+  <h2>My Code</h2>
+  <code>function sum(array) {<br>
+  return array.reduce(function(a,b) {return a +b});<br>
+}</code>
+</section>
+<hr>
+
+<section>
+  <h2>Problem 23: Get key/value pairs as arrays</h2>
+  <p>Description:<br>
+
+Complete the keysAndValues function so that it takes in an object and returns the keys and values as separate arrays.<br>
+
+Example:<br>
+
+<code>keysAndValues({a: 1, b: 2, c: 3}) // should return [['a', 'b', 'c'], [1, 2, 3]]</code><br>
+Style Points: This kata only tests for data that uses object literal notation (simple objects). For extra style, can you get your<br> method to check for JavaScript objects that extend their prototype?</p>
+  <h2>My Code</h2>
+  <code>function keysAndValues(data){<br>
+ var aData = []; <br>
+ var aValue = [];<br>
+ var aKey = Object.keys(data);<br>
+
+ for (var x in data) {aValue.push(data[x]);}<br>
+ 
+ 
+ aData.push(aKey,aValue); <br>
+ return aData;<br>
+}</code>
+</section>
+<hr>
+
+<section>
+  <h2>Problem 24: Basic Calculator</h2>
+  <p>Description:<br>
+<br>"+" , "-", "*", or "/", the function will return the result of the corresponding mathematical function on the two numbers. If the string is not one of<br> the specified characters, the function should return null.<br>
+
+<code>calculate(2,"+", 4); //Should return 6<br>
+  calculate(6,"-", 1.5); //Should return 4.5<br>
+  calculate(-4,"*", 8); //Should return -32<br>
+  calculate(49,"/", -7); //Should return -7<br>
+  calculate(8,"m", 2); //Should return null<br>
+  calculate(4,"/",0) //should return null</code>
+Keep in mind, you cannot divide by zero. If an attempt to divide by zero is made, return null.</p>
+  <h2>My Code</h2>
+  <code>function calculate(num1, operation, num2) {<br>
+ switch (operation) {<br>
+     case "+": return num1 + num2;<br>
+     break;<br>
+     
+     case "-": return num1 - num2;<br>
+     break;<br>
+     
+     case "*": return num1*num2;<br>
+     break;<br>
+     
+     case "/": return num2 === 0 ? null : num1/num2;<br>
+     break;<br>
+     
+     default: return null; <br>
+
+     
+ }<br>
+}</code>
+</section>
+<hr>
 <!-- Section Structure
 section>(h2{Problem}+p)+(h2{My Code}+code)^hr -->
 
